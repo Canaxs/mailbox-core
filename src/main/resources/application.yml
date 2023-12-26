@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: dev
+
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url:
+    username:
+    password:
