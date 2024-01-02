@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.Key;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 @Service
@@ -22,7 +23,13 @@ public class JwtServiceImpl implements JwtService {
 
     @Override
     public String extractUser(String token) {
-        return null;
+        Claims claims = Jwts
+                .parserBuilder()
+                .setSigningKey(getSignKey())
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+        return claims.getSubject();
     }
 
     @Override
@@ -31,6 +38,13 @@ public class JwtServiceImpl implements JwtService {
         Date expirationDate = extractExpiration(token);
         return userDetails.getUsername().equals(username) && !expirationDate.before(new Date());
     }
+
+    @Override
+    public String generateToken(String userName) {
+        Map<String, Object> claims = new HashMap<>();
+        return createToken(claims, userName);
+    }
+
     private Date extractExpiration(String token) {
         Claims claims = Jwts
                 .parserBuilder()
