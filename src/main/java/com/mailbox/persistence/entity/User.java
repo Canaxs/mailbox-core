@@ -27,6 +27,7 @@ public class User implements UserDetails {
     private Long Id;
 
     @NotNull
+    @UniqueUsername
     @Size(min=2,max=255)
     private String username;
 
