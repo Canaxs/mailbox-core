@@ -12,5 +12,3 @@ spring:
 mailbox:
   ui:
     address: "*"
-  message:
-    uniqueusername: "Username error"

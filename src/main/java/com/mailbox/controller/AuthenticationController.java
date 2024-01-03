@@ -1,17 +1,18 @@
 package com.mailbox.controller;
 
-import com.mailbox.common.exception.AuthException;
-import com.mailbox.models.UserAuthRequest;
+import com.mailbox.models.request.UserAuthRequest;
 import com.mailbox.service.AuthenticationService;
-import com.mailbox.service.JwtService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = {"${mailbox.ui.address}"})
 @RequestMapping("/auth")
+@Tag(name="Authentication Controller Documentation")
 public class AuthenticationController {
 
     private final AuthenticationService authenticateService;
@@ -23,12 +24,40 @@ public class AuthenticationController {
         this.authenticationManager = authenticationManager;
     }
 
-    @PostMapping
+    @Operation(
+            description = "Login Service",
+            summary = "Login and GenerateJwtToken Service",
+            responses = {
+                    @ApiResponse(
+                            description = "Success",
+                            responseCode = "200"
+                    ),
+                    @ApiResponse(
+                            description = "Invalid",
+                            responseCode = "403"
+                    )
+            }
+    )
+    @PostMapping("/login")
     private String isLogged(@RequestBody UserAuthRequest userAuthRequest) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userAuthRequest.getUsername(), userAuthRequest.getPassword()));
         return authenticateService.authenticate(userAuthRequest,authentication);
     }
 
+    @Operation(
+            description = "Logout Service",
+            summary = "Logout Service",
+            responses = {
+                    @ApiResponse(
+                            description = "Success",
+                            responseCode = "200"
+                    ),
+                    @ApiResponse(
+                            description = "Invalid",
+                            responseCode = "403"
+                    )
+            }
+    )
     @PostMapping("/logout")
     String handleLogout(@RequestHeader(name = "Authorization") String authorization) {
         return null;

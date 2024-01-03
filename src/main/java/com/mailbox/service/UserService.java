@@ -1,5 +1,6 @@
 package com.mailbox.service;
 
+import com.mailbox.models.request.UserCreateRequest;
 import com.mailbox.persistence.entity.User;
 import com.mailbox.persistence.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -15,6 +16,8 @@ import java.util.Optional;
 public class UserService implements UserDetailsService {
 
     private UserRepository userRepository;
+
+
 
     private final BCryptPasswordEncoder passwordEncoder;
 
@@ -32,12 +35,12 @@ public class UserService implements UserDetailsService {
         return userRepository.findByUsername(username);
     }
 
-    public User createUser(String username, String password) {
+    public User createUser(UserCreateRequest userCreateRequest) {
         User newUser = User.builder()
-                .username(username)
-                .password(passwordEncoder.encode(password))
-                .build();
-
+                .username(userCreateRequest.getUsername())
+                .password(passwordEncoder.encode(userCreateRequest.getPassword()))
+                .mailAddress(userCreateRequest.getMailAddress())
+                .mailPassword(userCreateRequest.getMailPassword()).build();
         return userRepository.save(newUser);
     }
 
