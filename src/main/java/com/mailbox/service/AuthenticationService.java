@@ -1,6 +1,6 @@
 package com.mailbox.service;
 
-import com.mailbox.models.UserAuthRequest;
+import com.mailbox.models.request.UserAuthRequest;
 import org.springframework.security.core.Authentication;
 
 public interface AuthenticationService {

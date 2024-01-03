@@ -1,4 +1,4 @@
-package com.mailbox.models;
+package com.mailbox.models.request;
 
 import lombok.Data;
 import lombok.ToString;

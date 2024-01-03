@@ -16,7 +16,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Constraint(validatedBy = { UniqueUsernameValidator.class })
 public @interface UniqueUsername {
 
-    String message() default "{mailbox.message.uniqueusername}";
+    String message() default "Username available";
 
     Class<?>[] groups() default { };
 

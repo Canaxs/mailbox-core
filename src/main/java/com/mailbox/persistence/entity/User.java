@@ -1,6 +1,10 @@
 package com.mailbox.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.mailbox.common.annotation.UniqueUsername;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -12,8 +16,8 @@ import java.util.Collection;
 @EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "user")
-@Builder
 @ToString
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class User implements UserDetails {
@@ -22,12 +26,20 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
+    @NotNull
+    @Size(min=2,max=255)
     private String username;
 
+    @NotNull
     private String password;
 
-    @OneToOne
-    private UserMail userMail;
+    @NotNull
+    @Size(min=4,max=255)
+    private String mailAddress;
+
+    @NotNull
+    @Size(min=4,max=100)
+    private String mailPassword;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -35,22 +47,26 @@ public class User implements UserDetails {
     }
 
     @Override
+    @JsonIgnore
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
+    @JsonIgnore
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
+    @JsonIgnore
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
+    @JsonIgnore
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }
