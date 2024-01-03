@@ -35,6 +35,6 @@ public class MailBoxController {
     )
     @GetMapping("/mailControl")
     public String mailControl(){
-        return mailBoxService.mailControl("mailboxspring@gmail.com","ptqn cqmd iuik tkcp");
+        return mailBoxService.mailControl();
     }
 }
