@@ -1,0 +1,45 @@
+Word: başvur
+MailType: promotion
+Word: göz at
+MailType: promotion
+Word: gözat
+MailType: promotion
+Word: lansman özel
+MailType: promotion
+Word: lansmana özel
+MailType: promotion
+Word: tl
+MailType: promotion
+Word: en çok satan
+MailType: promotion
+Word: gördün mü
+MailType: promotion
+Word: incele
+MailType: promotion
+Word: indirim
+MailType: promotion
+Word: bul
+MailType: promotion
+Word: iş ilanı
+MailType: promotion
+Word: iş fırsat
+MailType: promotion
+Word: yakalama şansı
+MailType: promotion
+Word: üyelere özel
+MailType: promotion
+Word: üyelerine özel
+MailType: promotion
+Word: müzik
+MailType: music
+Word: konser
+MailType: music
+Word: festival
+MailType: music
+Word: dekont
+MailType: check
+Word: makbuz
+MailType: check
+
+
+

@@ -1,9 +1,12 @@
 package com.mailbox.service.impl;
 
 import com.mailbox.config.MailProperties;
+import com.mailbox.enums.MailType;
+import com.mailbox.models.response.MailInfoResponse;
 import com.mailbox.persistence.entity.Mails;
 import com.mailbox.persistence.entity.User;
 import com.mailbox.persistence.repository.MailsRepository;
+import com.mailbox.service.FileService;
 import com.mailbox.service.MailBoxService;
 import com.mailbox.service.UserService;
 import com.mailbox.service.dto.MailDTO;
@@ -15,6 +18,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import javax.mail.*;
 
@@ -29,12 +35,15 @@ public class MailBoxServiceImpl implements MailBoxService {
 
     private final MailsRepository mailsRepository;
 
+    private final FileService fileService;
+
     public MailBoxServiceImpl(UserService userService,UserMapper userMapper
-            ,MailMapper mailMapper,MailsRepository mailsRepository) {
+            ,MailMapper mailMapper,MailsRepository mailsRepository,FileService fileService) {
         this.userService = userService;
         this.userMapper = userMapper;
         this.mailMapper = mailMapper;
         this.mailsRepository = mailsRepository;
+        this.fileService = fileService;
     }
     public User securityUser() {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -42,7 +51,10 @@ public class MailBoxServiceImpl implements MailBoxService {
     }
 
     @Override
-    public String mailControl() {
+    public List<MailInfoResponse> mailControl() {
+        List<MailInfoResponse> mailInfoResponses = new ArrayList<>();
+        Map<MailType, String> mailTypeStringMap = fileService.fileReadConvertList();
+
         MailDTO mailDTO = userMapper.toMailDTO(securityUser());
 
         try {
@@ -65,7 +77,7 @@ public class MailBoxServiceImpl implements MailBoxService {
             System.out.println(e.toString());
         }
 
-        return "deneme";
+        return mailInfoResponses;
     }
     public Session sessionCreate(MailDTO mailDTO) {
         Properties props = new Properties();
@@ -90,19 +102,16 @@ public class MailBoxServiceImpl implements MailBoxService {
     }
 
     public void saveMail(MailInfoDTO mailInfoDTO) {
-        Mails mails = mailMapper.toMails(mailInfoDTO);
-        mails.setUserId(securityUser().getId());
-        mailsRepository.save(mails);
     }
 
-    public void folderDownload() {
+    public void messageExtract(Message message) {
     }
 
-    public void extractFolder() {
+    public void addressControl() {
 
     }
 
-    public void compareTable() {
+    public void wordControl() {
 
     }
 }

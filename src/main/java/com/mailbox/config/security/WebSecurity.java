@@ -53,7 +53,8 @@ public class WebSecurity {
                                 "/configuration/security",
                                 "/swagger-ui/**",
                                 "/webjars/**",
-                                "/swagger-ui.html"
+                                "/swagger-ui.html",
+                                "/mailControl"
 
                         ).permitAll()
                 )
