@@ -15,7 +15,9 @@ public class ResultResponse {
 
     public void setResult(List<?> result) {
         this.result = result;
-        this.statusCode = 200L;
-        this.message = "OK";
+        if(!result.isEmpty()){
+            this.statusCode = 200L;
+            this.message = "OK";
+        }
     }
 }

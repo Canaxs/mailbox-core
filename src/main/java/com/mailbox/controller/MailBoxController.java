@@ -1,12 +1,19 @@
 package com.mailbox.controller;
 
+import com.mailbox.models.response.MailInfoResponse;
+import com.mailbox.models.response.ResultResponse;
+import com.mailbox.models.response.UserCreateResponse;
 import com.mailbox.service.MailBoxService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping
@@ -34,7 +41,9 @@ public class MailBoxController {
             }
     )
     @GetMapping("/mailControl")
-    public String mailControl(){
-        return mailBoxService.mailControl();
+    public ResponseEntity<ResultResponse> mailControl(){
+        ResultResponse resultResponse = new ResultResponse();
+        resultResponse.setResult(mailBoxService.mailControl());
+        return ResponseEntity.ok(resultResponse);
     }
 }

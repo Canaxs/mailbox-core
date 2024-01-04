@@ -6,6 +6,7 @@ public enum MailType {
     ATTACHMENTS,
     PROMOTION,
     MUSIC,
+    CHECK,
     UNKNOWN;
 
     public static MailType convert(String step) {
@@ -20,6 +21,8 @@ public enum MailType {
                 return MailType.PROMOTION;
             case "music":
                 return MailType.MUSIC;
+            case "check":
+                return MailType.CHECK;
             default:
                 return MailType.UNKNOWN;
         }
