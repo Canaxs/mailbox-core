@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql
+    restart: always
+    container_name: mailbox-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: deneme
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: "12345"
+    ports:
+      - '3306:3306'
