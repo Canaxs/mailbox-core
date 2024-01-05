@@ -40,6 +40,8 @@ Word: dekont
 MailType: check
 Word: makbuz
 MailType: check
+Word: güvenlik
+MailType: malware
 
 
 

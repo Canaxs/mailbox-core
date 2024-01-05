@@ -7,5 +7,5 @@ import java.util.Map;
 
 public interface FileService {
 
-    Map<MailType,String> fileReadConvertList();
+    Map<String, MailType> fileReadConvertList();
 }

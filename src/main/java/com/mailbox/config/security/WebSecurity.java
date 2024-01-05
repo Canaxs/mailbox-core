@@ -53,10 +53,11 @@ public class WebSecurity {
                                 "/configuration/security",
                                 "/swagger-ui/**",
                                 "/webjars/**",
-                                "/swagger-ui.html",
-                                "/mailControl"
+                                "/swagger-ui.html"
 
                         ).permitAll()
+                ).authorizeHttpRequests(x ->
+                        x.requestMatchers("/mailControl").authenticated()
                 )
                 .sessionManagement(x -> x.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())

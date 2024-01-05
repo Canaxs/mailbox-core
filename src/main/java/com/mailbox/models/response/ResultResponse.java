@@ -10,8 +10,8 @@ import java.util.List;
 @ToString
 public class ResultResponse {
     private List<?> result;
-    private Long statusCode;
-    private String message;
+    private Long statusCode = 404L;
+    private String message = "NOT FOUND";
 
     public void setResult(List<?> result) {
         this.result = result;

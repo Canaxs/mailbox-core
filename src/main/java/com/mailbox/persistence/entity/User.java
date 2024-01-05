@@ -6,17 +6,18 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import lombok.experimental.Accessors;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Objects;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "user")
-@ToString
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,8 +28,8 @@ public class User implements UserDetails {
     private Long Id;
 
     @NotNull
-    @UniqueUsername
     @Size(min=2,max=255)
+    @Column(unique = true)
     private String username;
 
     @NotNull
@@ -44,7 +45,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return AuthorityUtils.createAuthorityList("Role_user");
+        return AuthorityUtils.createAuthorityList("ROLE_USER");
     }
 
     @Override
