@@ -19,13 +19,12 @@ import java.util.stream.Stream;
 @Service
 public class FileServiceImpl implements FileService {
     @Override
-    public Map<MailType, String> fileReadConvertList() {
-        Map<MailType, String> file = new HashMap<>();
+    public Map<String, MailType> fileReadConvertList() {
+        Map<String, MailType> file = new HashMap<>();
         List<String> word = bringTheArrow(CommonConstants.mailFileWord);
         List<String> mailType = bringTheArrow(CommonConstants.mailFileType);
         for(int i =0;i<word.size();i++) {
-            System.out.println(word.get(i)+" : "+mailType.get(i));
-            file.put(MailType.convert(mailType.get(i)),word.get(i));
+            file.put(word.get(i).split(CommonConstants.mailFileWord)[1],MailType.convert(mailType.get(i).split(CommonConstants.mailFileType)[1]));
         }
         return file;
     }
