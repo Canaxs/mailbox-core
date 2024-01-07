@@ -5,35 +5,8 @@
     <img src="https://www.cdnlogo.com/logos/m/64/mail-ios.svg" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">MailBox-Core</h3>
+<h3 align="center">MailBox Core</h3>
 </div>
-
-
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
 
 
 
@@ -44,39 +17,59 @@ Dependencies used -->
 
 [Spring Boot Starters Addiction Definition]
 
-* [Data-Jpa] * [Test]
-* [Security] * [Validation]
+* [Data-Jpa] 
+* [Security] 
 * [Web]
 * [Mail]
+* [Validation]
+* [Test]
 
 [Other Addictions]
 
-* [SpringDoc-OpenAPI] * [Mapstruct]
-* [Lombok]            * [JWT]
-* [Mysql-Connector]   * [Jsoup]
+* [SpringDoc-OpenAPI]
+* [Lombok]            
+* [Mysql-Connector]
+* [Jsoup]
+* [JWT]
+* [Mapstruct]
 
+### What does the project do?
+
+By connecting to the e-mail addresses that users have registered in the system, it reads and sorts the e-mails in the inbox and lists the e-mails in 7 different types according to their content.
+
+### Mail Types
+
+* [SOCIAL]
+* [MALWARE]
+* [ATTACHMENTS]
+* [PROMOTION]
+* [MUSIC]
+* [CHECK]
+* [UNKNOWN]
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-* [Spring-Boot]
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
+First of all, you need to install the docker-compose file that I prepared for Mysql installation.
+---> Open Terminal in the mailbox directory and run the docker-compose up command
+---> You can use it when it is ready for connection. You can use the Docker desktop application to perform Docker container control.
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Run the project through eclipse with spring run Application. You need to create a database named twitter in MySQL database. You can test the program with PostMan.
+Follow these steps to get the Mailbox project up and running:
+---> New -> Project From Existing Sources -> src/mailbox-core -> Maven -> OK (Intellij Idea)
+---> Maven Clean -> Maven Install
 
+## Service addresses
 
-## Usage
+## User Controller
+* [localhost:8080/mailbox/user/create]
 
-I have taken these parts as a subject in my medium article, you can reach them from there.
+## Authentication Controller
+* [localhost:8080/mailbox/auth/login]
 
-
+## MailBox Controller
+* [localhost:8080/mailbox/mailControl] Authenticated
 
 
 <!-- LICENSE -->
