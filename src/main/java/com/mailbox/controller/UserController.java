@@ -1,5 +1,6 @@
 package com.mailbox.controller;
 
+import com.mailbox.common.exception.UserException;
 import com.mailbox.models.request.UserCreateRequest;
 import com.mailbox.models.response.ResultResponse;
 import com.mailbox.models.response.UserCreateResponse;

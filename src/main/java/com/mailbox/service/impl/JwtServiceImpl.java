@@ -45,6 +45,12 @@ public class JwtServiceImpl implements JwtService {
         return createToken(claims, userName);
     }
 
+    @Override
+    public Boolean validateExpiration(String token){
+        Date expirationDate = extractExpiration(token);
+        return !expirationDate.before(new Date());
+    }
+
     private Date extractExpiration(String token) {
         Claims claims = Jwts
                 .parserBuilder()
@@ -59,7 +65,7 @@ public class JwtServiceImpl implements JwtService {
                 .setClaims(claims)
                 .setSubject(userName)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 2))
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 30))
                 .signWith(getSignKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
