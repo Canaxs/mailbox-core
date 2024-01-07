@@ -1,5 +1,6 @@
 package com.mailbox.service;
 
+import com.mailbox.common.exception.UserException;
 import com.mailbox.models.request.UserCreateRequest;
 import com.mailbox.persistence.entity.User;
 import com.mailbox.persistence.repository.UserRepository;
@@ -35,7 +36,7 @@ public class UserService implements UserDetailsService {
         return userRepository.findByUsername(username);
     }
 
-    public User createUser(UserCreateRequest userCreateRequest) {
+    public User createUser(UserCreateRequest userCreateRequest) throws UserException {
         User newUser = User.builder()
                 .username(userCreateRequest.getUsername())
                 .password(passwordEncoder.encode(userCreateRequest.getPassword()))

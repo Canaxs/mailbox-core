@@ -60,6 +60,6 @@ public class AuthenticationController {
     )
     @PostMapping("/logout")
     String handleLogout(@RequestHeader(name = "Authorization") String authorization) {
-        return null;
+        return authenticateService.logout(authorization.substring(7));
     }
 }
