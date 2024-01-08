@@ -8,6 +8,8 @@
 <h3 align="center">MailBox Core</h3>
 </div>
 
+[@MailDashboard](https://github.com/users/Canaxs/projects/1)
+
 
 
 <!-- ABOUT THE PROJECT -->
@@ -77,8 +79,6 @@ Follow these steps to get the Mailbox project up and running:
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- CONTACT -->
@@ -87,8 +87,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 Mail and Twitter - [@your_twitter](https://twitter.com/cana_meric) - mmericcana@gmail.com
 
 Project Link: [https://github.com/Canaxs/mailbox-core](https://github.com/Canaxs/mailbox-core)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
@@ -99,6 +97,4 @@ Use this space to list resources you find helpful and would like to give credit 
 
 * [Choose an Open Source License](https://choosealicense.com)
 * [GitHub Pages](https://pages.github.com)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
