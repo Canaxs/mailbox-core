@@ -30,7 +30,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public String authenticate(UserAuthRequest userAuthRequest, Authentication authentication) {
         if(authentication.isAuthenticated()) {
-            return jwtService.generateToken(userAuthRequest.getUsername());
+            String token = jwtService.generateToken(userAuthRequest.getUsername());
+            Token token1 = new Token();
+            token1.setToken(token);
+            tokenRepository.save(token1);
+            return token;
         }
         throw new AuthException("identity could not be verified");
     }

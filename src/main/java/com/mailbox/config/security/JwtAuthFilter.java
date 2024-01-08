@@ -1,5 +1,6 @@
 package com.mailbox.config.security;
 
+import com.mailbox.persistence.repository.TokenRepository;
 import com.mailbox.service.JwtService;
 import com.mailbox.service.UserService;
 import jakarta.servlet.FilterChain;
@@ -21,9 +22,12 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     private final JwtService jwtService;
     private final UserService userService;
 
-    public JwtAuthFilter(JwtService jwtService,UserService userService) {
+    private final TokenRepository tokenRepository;
+
+    public JwtAuthFilter(JwtService jwtService, UserService userService, TokenRepository tokenRepository) {
         this.jwtService = jwtService;
         this.userService = userService;
+        this.tokenRepository = tokenRepository;
     }
 
     @Override
@@ -36,7 +40,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             userName = jwtService.extractUser(token);
         }
 
-        if (userName != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+        if (userName != null && SecurityContextHolder.getContext().getAuthentication() == null && tokenRepository.existsByToken(token)) {
             UserDetails user = userService.loadUserByUsername(userName);
             if (jwtService.validateToken(token, user)) {
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
