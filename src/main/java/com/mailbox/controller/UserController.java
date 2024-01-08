@@ -4,6 +4,7 @@ import com.mailbox.common.exception.UserException;
 import com.mailbox.models.request.UserCreateRequest;
 import com.mailbox.models.response.ResultResponse;
 import com.mailbox.models.response.UserCreateResponse;
+import com.mailbox.persistence.entity.User;
 import com.mailbox.service.UserService;
 import com.mailbox.service.mapper.UserMapper;
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,13 +26,10 @@ public class UserController {
 
     private UserService userService;
 
-    private UserMapper userMapper;
 
-
-    public UserController(UserService userService,UserMapper userMapper) {
+    public UserController(UserService userService) {
 
         this.userService = userService;
-        this.userMapper = userMapper;
     }
 
     @Operation(
@@ -52,7 +50,8 @@ public class UserController {
     private ResponseEntity<ResultResponse> userCreate(@RequestBody UserCreateRequest userCreateRequest) {
         ResultResponse resultResponse = new ResultResponse();
         List<UserCreateResponse> createResponses = new ArrayList<>();
-        createResponses.add(userMapper.toUserCreateResponse(userService.createUser(userCreateRequest)));
+        User user = userService.createUser(userCreateRequest);
+        createResponses.add(UserCreateResponse.builder().id(String.valueOf(user.getId())).username(user.getUsername()).password(user.getPassword()).build());
         resultResponse.setResult(createResponses);
         return ResponseEntity.ok(resultResponse);
     }

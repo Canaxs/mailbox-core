@@ -29,19 +29,12 @@ public class MailBoxServiceImpl implements MailBoxService {
 
     private final UserService userService;
 
-    private final UserMapper userMapper;
-
-    private final MailMapper mailMapper;
-
     private final MailsRepository mailsRepository;
 
     private final FileService fileService;
 
-    public MailBoxServiceImpl(UserService userService, UserMapper userMapper
-            , MailMapper mailMapper, MailsRepository mailsRepository, FileService fileService) {
+    public MailBoxServiceImpl(UserService userService, MailsRepository mailsRepository, FileService fileService) {
         this.userService = userService;
-        this.userMapper = userMapper;
-        this.mailMapper = mailMapper;
         this.mailsRepository = mailsRepository;
         this.fileService = fileService;
     }
