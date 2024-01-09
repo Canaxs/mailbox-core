@@ -1,16 +1,20 @@
+
+[![Contributors][contributors-shield]][contributors-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
+
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://medium.com/@mericcana/mailbox-core-92fb5527b13b">
     <img src="https://www.cdnlogo.com/logos/m/64/mail-ios.svg" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">MailBox Core</h3>
 </div>
 
-[@MailDashboard](https://github.com/users/Canaxs/projects/1)
+Task Table --> [@MailDashboard](https://github.com/users/Canaxs/projects/1)
 
-
+Medium Article --> [@Medium](https://medium.com/@mericcana/mailbox-core-92fb5527b13b)
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -97,4 +101,12 @@ Use this space to list resources you find helpful and would like to give credit 
 
 * [Choose an Open Source License](https://choosealicense.com)
 * [GitHub Pages](https://pages.github.com)
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
+[contributors-url]: https://github.com/Canaxs/spring-twitter-api/graphs/contributors
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/mericcana/
 
